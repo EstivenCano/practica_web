@@ -17,64 +17,68 @@
       </b-collapse>
     </b-navbar>
     <center>
- <b-card
-      title="Agregar Bookmarks"
-      style="margin-left: 50px; margin-right: 50px; margin-top: 20px;"
-    >
-      <div>
-        <b-form @submit="onSubmit" @reset="onReset" v-if="show">
-          <b-form-group
-            id="input-group-1"
-            label="Nombre de marcador:"
-            label-for="input-1"
-          >
-            <b-form-input
-              id="boxNombre"
-              v-model="form.boxNombre"
-              required
-              placeholder="Ingresa en nombre del marcador"
-            ></b-form-input>
-          </b-form-group>
+      <b-card
+        title="Agregar Bookmarks"
+        style="margin-left: 50px; margin-right: 50px; margin-top: 20px;"
+      >
+        <div>
+          <b-form @submit="onSubmit" @reset="onReset" v-if="show">
+            <b-form-group
+              id="input-group-1"
+              label="Nombre de marcador:"
+              label-for="input-1"
+            >
+              <b-form-input
+                id="nombre"
+                v-model="form.nombre"
+                required
+                placeholder="Ingresa el nombre del marcador"
+              ></b-form-input>
+            </b-form-group>
 
-          <b-form-group
-            id="input-group-2"
-            label="URL:"
-            label-for="input-2"
-          >
-            <b-form-input
-              id="boxUrl"
-              v-model="form.boxUrl"
-              required
-              placeholder="Ingresa la URL del marcador"
-            ></b-form-input>
-          </b-form-group>
+            <b-form-group id="input-group-2" label="URL:" label-for="input-2">
+              <b-form-input
+                id="boxUrl"
+                type = "url"
+                required
+                v-model="form.url"
+                placeholder="Ingresa la URL del marcador"
+              ></b-form-input>
+            </b-form-group>
 
-          <b-form-group id="input-group-3" label="Food:" label-for="input-3">
-            <b-form-select
-              id="input-3"
-              v-model="form.food"
-              :options="foods"
-              required
-            ></b-form-select>
-          </b-form-group>
+            <b-form-group
+              id="input-group-3"
+              label="Categorias:"
+              label-for="input-3"
+            >
+              <b-form-select
+                v-model="form.categoria"
+                id="boxCategoria"
+                :options="categoria"
+                required
+              >
+              </b-form-select>
+            </b-form-group>
 
-          <b-form-group id="input-group-4">
-            <b-form-checkbox-group v-model="form.checked" id="checkboxes-4">
-              <b-form-checkbox value="me">Check me out</b-form-checkbox>
-              <b-form-checkbox value="that">Check that out</b-form-checkbox>
-            </b-form-checkbox-group>
-          </b-form-group>
+            <b-form-group
+              id="input-group-4"
+              label="Descripcion:"
+              label-for="input-4"
+            >
+              <b-form-input
+                id="boxDescripcion"
+                required
+                v-model="form.descripcion"
+                placeholder="Ingresa una descripcion del marcador"
+              ></b-form-input>
+            </b-form-group>
 
-          <b-button type="submit" variant="primary">Submit</b-button>
-          <b-button type="reset" variant="danger">Reset</b-button>
-        </b-form>
-        <b-card class="mt-3" header="Form Data Result">
-          <pre class="m-0">{{ form }}</pre>
-        </b-card>
-      </div>
-    </b-card>
+            <b-button type="submit" variant="primary">Agregar</b-button>
+            <b-button type="reset" variant="danger">Limpiar</b-button>
+          </b-form>
+        </div>
+      </b-card>
     </center>
-   
   </div>
 </template>
 

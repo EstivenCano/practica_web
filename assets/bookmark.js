@@ -2,12 +2,13 @@ export default {
     data() {
       return {
         form: {
-          email: '',
-          name: '',
-          food: null,
-          checked: []
+          nombre: '',
+          url: '',
+          categoria: null,
+          descripcion: ''    
         },
-        foods: [{ text: 'Select One', value: null }, 'Carrots', 'Beans', 'Tomatoes', 'Corn'],
+
+        categoria: [{ text: 'Selecciona la categoria', value: null, disabled: true}, 'Educativo', 'Social', 'Media', 'Juegos'],
         show: true
       }
     },
@@ -15,19 +16,24 @@ export default {
       onSubmit(evt) {
         evt.preventDefault()
         alert(JSON.stringify(this.form))
+
       },
       onReset(evt) {
         evt.preventDefault()
         // Reset our form values
-        this.form.email = ''
-        this.form.name = ''
-        this.form.food = null
-        this.form.checked = []
+
         // Trick to reset/clear native browser form validation state
         this.show = false
+        this.form.categoria = null;
         this.$nextTick(() => {
           this.show = true
         })
       }
     }
   }
+
+
+function guardarBookmark(params) {
+  
+  
+}
