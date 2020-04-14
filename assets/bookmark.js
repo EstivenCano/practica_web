@@ -1,6 +1,9 @@
+
 export default {
+  
     data() {
       return {
+        
         form: {
           nombre: '',
           url: '',
@@ -8,14 +11,34 @@ export default {
           descripcion: ''    
         },
 
+
         categoria: [{ text: 'Selecciona la categoria', value: null, disabled: true}, 'Educativo', 'Social', 'Media', 'Juegos'],
-        show: true
+        show: true 
       }
     },
     methods: {
+
+      guardarBookmark(){
+        this.items = [];
+        let url = 'http://localhost:3001/marcadores';
+        this.loading = true;
+        this.$axios
+          .get(url)
+          .then(response => {
+
+            console.log(response.data);
+            
+          })
+          .catch(error => {
+           
+          });
+      },
+
       onSubmit(evt) {
+
         evt.preventDefault()
         alert(JSON.stringify(this.form))
+
 
       },
       onReset(evt) {
@@ -32,8 +55,17 @@ export default {
     }
   }
 
-
-function guardarBookmark(params) {
-  
-  
+function guardarBookmark() {
+  this.items = [];
+  let url = 'http://localhost:3001/marcadores';
+  this.loading = true;
+  this.$axios
+    .get(url)
+    .then(response => {
+      console.log(response);
+      
+    })
+    .catch(error => {
+     
+    });
 }

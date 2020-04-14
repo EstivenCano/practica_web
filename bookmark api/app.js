@@ -18,7 +18,7 @@ const rutas_marcadores = require('./routes/marcadores')
 app.use(rutas_marcadores)
 
 //Puerto
-const port = 3000
+const port = 3001
 //Levantar el servidor para escuchar los puertos
 app.listen(port,() =>{
     console.log(`Escuchando API en http://localhost:${port}`)
