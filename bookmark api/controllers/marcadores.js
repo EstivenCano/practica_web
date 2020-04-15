@@ -94,6 +94,10 @@ let consultarMarcador = async (id) => {
   return respuesta;
 };
 
+/**
+ * Eliminar marcador según ID
+ * @param {*} id 
+ */
 let eliminarMarcador = async (id) => {
 
   let servicio = new ServicioPg();

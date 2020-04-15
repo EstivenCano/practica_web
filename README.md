@@ -1,6 +1,50 @@
-# practica_web
+## Practica de desarrollo web APIS
 
-> Practica APIS
+Desarrollador: 
+ Nombre: Estiven Cano Urrego
+ correo: estivencano99@gmail.com
+
+## Desarrollada con: 
+
+- Bootstrap Vue
+- Nuxt.js
+- Axios
+
+## Base de datos
+
+# Script base de datos: 
+
+-Crear base de datos 
+
+CREATE DATABASE bookmarks
+    WITH 
+    OWNER = postgres
+    ENCODING = 'UTF8'
+    LC_COLLATE = 'English_United States.1252'
+    LC_CTYPE = 'English_United States.1252'
+    TABLESPACE = pg_default
+    CONNECTION LIMIT = -1;
+
+----------------------------------------------------------------------------------
+- Crear tabla de marcadores
+
+CREATE TABLE public.marcadores
+(
+    id bigint NOT NULL DEFAULT nextval('marcadores_id_seq'::regclass),
+    nombre character varying COLLATE pg_catalog."default" NOT NULL,
+    url character varying COLLATE pg_catalog."default" NOT NULL,
+    categoria character varying COLLATE pg_catalog."default",
+    descripcion character varying COLLATE pg_catalog."default",
+    acciones boolean DEFAULT true,
+    CONSTRAINT marcadores_pk PRIMARY KEY (id)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE public.marcadores
+    OWNER to postgres;
+
+------------------------------------------------------------------------------------
 
 ## Build Setup
 

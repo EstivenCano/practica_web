@@ -8,10 +8,12 @@ const cors = require('cors');
 const app = express()
 app.use(express.json())
 
+//Implementación de CORS 
 app.use(
     cors()
 )
 
+//Información que se obtendrá en nuestra URL principal.
 app.get("/",(req,res)=>{
 
     res.send("API Bookmarks");
