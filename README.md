@@ -1,8 +1,8 @@
 ## Practica de desarrollo web APIS
 
 Desarrollador: 
- Nombre: Estiven Cano Urrego
- correo: estivencano99@gmail.com
+ - Nombre: Estiven Cano Urrego
+ - correo: estivencano99@gmail.com
 
 ## Desarrollada con: 
 
@@ -14,7 +14,7 @@ Desarrollador:
 
 # Script base de datos: 
 
--Crear base de datos 
+- Crear base de datos 
 
 CREATE DATABASE bookmarks
     WITH 
