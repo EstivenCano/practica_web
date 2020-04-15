@@ -4,7 +4,10 @@ const router = express.Router();
 const {
   validarMarcador,
   guardarMarcador,
-  consultarMarcadores
+  consultarMarcadores,
+  eliminarMarcador, 
+  consultarMarcador,
+  modificarMarcador
 } = require("../controllers/marcadores");
 
 
@@ -12,7 +15,10 @@ const {
  * Obtener todos los marcadores
  */
 router.get("/marcadores", (req, res) => {
-  consultarMarcadores().then(respuestaDB => {
+
+  let filtros = req.query;
+
+  consultarMarcadores(filtros).then(respuestaDB => {
     let registros = respuestaDB.rows;
     res.send({
       ok: true,
@@ -51,5 +57,59 @@ router.post("/marcadores", (req, res) => {
   }
 
 });
+
+/**
+ * Eliminar un marcador según su ID
+ */
+router.delete("/marcadores/:id", (req, res) => {
+  
+  let id = req.params.id;
+  eliminarMarcador(id).then(respuestaDB => {
+    res.send({
+      ok: true,
+      info: {},
+      mensaje: 'Marcador eliminado'
+    });
+  }).catch(error => {
+    res.send(error);
+  });
+});
+
+/**
+ * Consultar marcador específico por ID
+ */
+router.get("/marcadores/:id", (req, res) => {
+  let id = req.params.id;
+  consultarMarcador(id).then(respuestaDB => {
+    let registros = respuestaDB.rows;
+    let mensaje = registros.length > 0 ? 'Marcador consultado.' : 'Sin registro.';
+    res.send({
+      ok: true,
+      info: registros, 
+      mensaje: mensaje
+    });
+  }).catch(error => {
+    res.send(error);
+  });
+});
+
+/**
+ * Modificar marcador según su ID
+ */
+router.put("/marcadores/:id",(req,res) =>{
+  //Capturar el parámetro de la ruta
+  let id = req.params.id;
+
+  let marcador = req.body;
+  
+  modificarMarcador(marcador,id).then(respuestaDB => {
+    res.send({ok:true , mensaje: "Marcador modificado", info: respuestaDB})
+  }).catch(error => {
+    res.send({ok:false , mensaje: "No se pudo modificar el marcador", info: error})
+  })
+})
+
+
+
 
 module.exports = router;

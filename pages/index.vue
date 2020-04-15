@@ -38,11 +38,11 @@
 
             <b-form-group id="input-group-2" label="URL:" label-for="input-2">
               <b-form-input
-                id="boxUrl"
-                type = "url"
+                id="url"
+                type="url"
                 required
                 v-model="form.url"
-                placeholder="Ingresa la URL del marcador"
+                placeholder="Ingresa la URL del marcador ('https://www.example.com')"
               ></b-form-input>
             </b-form-group>
 
@@ -53,7 +53,7 @@
             >
               <b-form-select
                 v-model="form.categoria"
-                id="boxCategoria"
+                id="categoria"
                 :options="categoria"
                 required
               >
@@ -62,21 +62,50 @@
 
             <b-form-group
               id="input-group-4"
-              label="Descripcion:"
+              label="Descripción:"
               label-for="input-4"
             >
               <b-form-input
-                id="boxDescripcion"
+                id="descripcion"
                 required
                 v-model="form.descripcion"
                 placeholder="Ingresa una descripcion del marcador"
               ></b-form-input>
             </b-form-group>
 
-            <b-button type="submit" variant="primary">Agregar</b-button>
+            <b-button type="submit" variant="primary" v-if="!enEdicion">Guardar</b-button>
+            <b-button variant="primary" v-if="enEdicion" @click="actualizarMarcador()">Actualizar</b-button>
             <b-button type="reset" variant="danger">Limpiar</b-button>
           </b-form>
         </div>
+
+        <br />
+
+        <b-table striped hover :items="marcadores">
+          <template v-slot:cell(acciones)="row">
+            <b-button
+              size="sm"
+              @click="irURL(row)"
+              class="mr-2"
+              variant="success"
+              >Ir a URL</b-button
+            >
+            <b-button
+              size="sm"
+              @click="modificarMarcador(row)"
+              class="mr-2"
+              variant="outline-primary"
+              >Modificar</b-button
+            >
+            <b-button
+              size="sm"
+              @click="eliminarMarcador(row)"
+              class="mr-2"
+              variant="danger"
+              >Eliminar</b-button
+            >
+          </template>
+        </b-table>
       </b-card>
     </center>
   </div>

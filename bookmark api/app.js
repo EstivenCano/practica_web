@@ -1,11 +1,16 @@
 //Importar express
 
 const express = require("express")
+const cors = require('cors');
+
 
 //Inicializar la libreria 
 const app = express()
 app.use(express.json())
 
+app.use(
+    cors()
+)
 
 app.get("/",(req,res)=>{
 
@@ -16,6 +21,7 @@ app.get("/",(req,res)=>{
 //Importar las rutas con los endpoints especificos
 const rutas_marcadores = require('./routes/marcadores')
 app.use(rutas_marcadores)
+
 
 //Puerto
 const port = 3001
