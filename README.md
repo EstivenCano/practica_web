@@ -1,4 +1,4 @@
-## Practica de desarrollo web APIS
+## Práctica de desarrollo web APIS
 
 Desarrollador: 
  - Nombre: Estiven Cano Urrego
@@ -8,11 +8,10 @@ Desarrollador:
 
 - Bootstrap Vue
 - Nuxt.js
+- Node.js
 - Axios
 
-## Base de datos
-
-# Script base de datos: 
+## Script base de datos: 
 
 - Crear base de datos 
 

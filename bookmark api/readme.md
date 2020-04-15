@@ -1,4 +1,4 @@
-# APLICATIVO WEB SIMULACION BOOKMARKS
+# APLICATIVO WEB SIMULACIÓN BOOKMARKS
 API para gestionar marcadores web
 
 ## Marcador
@@ -7,3 +7,4 @@ API para gestionar marcadores web
 - url
 - categoria 
 - descripcion 
+- acciones
