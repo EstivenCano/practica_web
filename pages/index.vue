@@ -22,8 +22,13 @@
         style="margin-left: 50px; margin-right: 50px; margin-top: 20px;"
       >
         <div>
+          <hr />
           <b-form @submit="onSubmit" @reset="onReset" v-if="show">
-            <b-form-group id="input-group-1" label="Nombre de marcador:" label-for="input-1">
+            <b-form-group
+              id="input-group-1"
+              label="Nombre de marcador:"
+              label-for="input-1"
+            >
               <b-form-input
                 id="nombre"
                 v-model="form.nombre"
@@ -42,23 +47,46 @@
               ></b-form-input>
             </b-form-group>
 
-            <b-form-group id="input-group-3" label="Categorias:" label-for="input-3">
-              <b-form-select v-model="form.categoria" id="categoria" :options="categoria" required></b-form-select>
+            <b-form-group
+              id="input-group-3"
+              label="Categorias:"
+              label-for="input-3"
+            >
+              <b-form-select
+                v-model="form.categoria"
+                id="categoria"
+                :options="categoria"
+                required
+              ></b-form-select>
             </b-form-group>
 
-            <b-form-group id="input-group-4" label="Descripción:" label-for="input-4">
+            <b-form-group
+              id="input-group-4"
+              label="Descripción:"
+              label-for="input-4"
+            >
               <b-form-input
                 id="descripcion"
-                required
                 v-model="form.descripcion"
                 placeholder="Ingresa una descripcion del marcador"
               ></b-form-input>
             </b-form-group>
 
-            <b-button type="submit" variant="primary" v-if="!enEdicion">Guardar</b-button>
-            <b-button variant="primary" v-if="enEdicion" @click="actualizarMarcador()">Actualizar</b-button>
-            <b-button type="reset" variant="danger" v-if="!enEdicion">Limpiar</b-button>
-            <b-button type="reset" variant="danger" v-if="enEdicion">Cancelar</b-button>
+            <b-button type="submit" variant="primary" v-if="!enEdicion"
+              >Guardar</b-button
+            >
+            <b-button
+              variant="primary"
+              v-if="enEdicion"
+              @click="actualizarMarcador()"
+              >Actualizar</b-button
+            >
+            <b-button type="reset" variant="danger" v-if="!enEdicion"
+              >Limpiar</b-button
+            >
+            <b-button type="reset" variant="danger" v-if="enEdicion"
+              >Cancelar</b-button
+            >
           </b-form>
         </div>
 
@@ -66,19 +94,27 @@
 
         <b-table striped hover :items="marcadores">
           <template v-slot:cell(acciones)="row">
-            <b-button size="sm" @click="irURL(row)" class="mr-2" variant="success">Ir a URL</b-button>
+            <b-button
+              size="sm"
+              @click="irURL(row)"
+              class="mr-2"
+              variant="success"
+              >Ir a URL</b-button
+            >
             <b-button
               size="sm"
               @click="modificarMarcador(row)"
               class="mr-2"
               variant="outline-primary"
-            >Modificar</b-button>
+              >Modificar</b-button
+            >
             <b-button
               size="sm"
               @click="eliminarMarcador(row)"
               class="mr-2"
               variant="danger"
-            >Eliminar</b-button>
+              >Eliminar</b-button
+            >
           </template>
         </b-table>
       </b-card>
